@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atelier MDF Oran – Cuisines, chambres, dressings sur mesure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1311;--ink:#eef1ee;--mut:#9aa8a0;--card:#171f1b;--acc:#d2a15f;--onacc:#101612;--line:rgba(238,241,238,.14);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101612;--ink:#e8ebe7;--mut:#9aa8a0;--card:#18211b;--acc:#d2a15f;--onacc:#101612;--line:rgba(232,235,231,.16)}}
+:root[data-theme="dark"]{--bg:#101612;--ink:#e8ebe7;--mut:#9aa8a0;--card:#18211b;--acc:#d2a15f;--onacc:#101612;--line:rgba(232,235,231,.16)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Arial Narrow",sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1360px;margin:0 auto;padding:0 22px}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px;gap:16px}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:-.02em}
+nav{display:flex;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:var(--mut)}nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;align-items:center;padding-top:20px;padding-bottom:56px}
+.hero h1{font-size:clamp(34px,6vw,76px);font-weight:800}
+.hero p.lead{color:var(--mut);max-width:44ch;margin:22px 0 28px}
+.btn{display:inline-block;background:var(--acc);color:var(--onacc);font:500 16px "DM Sans",sans-serif;border:0;border-radius:999px;padding:14px 26px;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.stage{position:relative;background:radial-gradient(ellipse at 50% 85%,color-mix(in srgb,var(--acc) 22%,transparent),transparent 65%),var(--card);border:1px solid var(--line);border-radius:36px;overflow:hidden;height:min(80vh,720px);min-height:460px;touch-action:pan-y}
+#gl{width:100%;height:100%;display:block;cursor:grab}
+#gl:active{cursor:grabbing}
+.nogl::after{content:"Votre navigateur ne peut pas afficher la 3D.";position:absolute;inset:0;display:grid;place-items:center;color:var(--mut)}
+.tabs{position:absolute;left:14px;right:14px;top:14px;display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:500 14px "DM Sans",sans-serif;color:var(--ink);background:color-mix(in srgb,var(--bg) 80%,transparent);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(6px)}
+.tabs button[aria-selected="true"]{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+.ctrl{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sw{display:flex;gap:8px}
+.sw button{width:30px;height:30px;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1.5px var(--line);cursor:pointer;padding:0}
+.sw button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--acc)}
+.ctrl .btn{padding:9px 18px;font-size:14px}
+.hint{position:absolute;right:16px;top:58px;font-size:13px;color:var(--mut)}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(30px,4vw,48px);margin-bottom:28px;max-width:18ch}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.item{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;color:var(--ink);font:inherit;cursor:pointer;transition:transform .2s,border-color .2s}
+.item:hover{transform:translateY(-4px);border-color:var(--acc)}
+.item h3{font-size:24px;margin-bottom:10px}
+.item p{margin:0;color:var(--mut);font-size:15px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:s;padding:0;list-style:none;margin:0}
+.steps li{counter-increment:s;border-top:3px solid var(--acc);padding-top:14px}
+.steps li::before{content:counter(s);font:800 34px "Bricolage Grotesque",sans-serif;color:var(--acc)}
+.steps b{display:block;font:700 20px "Bricolage Grotesque",sans-serif;margin:4px 0 6px}
+.steps span{color:var(--mut);font-size:15px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+textarea,input{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin-bottom:12px}
+textarea{min-height:120px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-size:14px}
+@media(max-width:900px){.hero,.contact{grid-template-columns:1fr}.hero{padding-bottom:36px}.grid,.steps{grid-template-columns:1fr 1fr}.stage{height:min(72vh,600px);min-height:420px}section{padding:48px 0}.hero p.lead{max-width:60ch}header .wrap{flex-wrap:wrap}nav{gap:16px;font-size:14px}}
+@media(max-width:520px){.wrap{padding:0 16px}.grid,.steps{grid-template-columns:1fr}.hint{display:none}.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tabs button{flex:none}.sw button{width:26px;height:26px}.ctrl .btn{padding:8px 14px}.logo{font-size:19px}.btn{padding:12px 20px}.stage{min-height:400px;border-radius:26px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.item{transition:none}}
+.track{height:380vh;position:relative}
+.track .hero{position:sticky;top:0;height:100svh;padding-top:12px;padding-bottom:12px}
+.prog{position:absolute;left:0;top:0;width:100%;height:3px;background:var(--line);z-index:2}.prog i{display:block;height:100%;width:0;background:var(--acc)}
+.cap{position:absolute;left:18px;bottom:66px;max-width:62%;font:700 clamp(18px,2.4vw,28px)/1.1 "Bricolage Grotesque",sans-serif;text-shadow:0 2px 14px var(--bg);pointer-events:none}
+.marq{overflow:hidden;border-top:1px solid var(--line);padding:22px 0}
+.marq div{display:flex;width:max-content;animation:mq 30s linear infinite;font:800 clamp(34px,6vw,72px)/1 "Bricolage Grotesque",sans-serif;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.marq span{margin-right:48px;white-space:nowrap}.marq span::after{content:"";display:inline-block;width:.22em;height:.22em;background:var(--acc);border-radius:50%;margin-left:48px;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}.item.rv.in:hover{transform:translateY(-4px);transition:transform .2s,border-color .2s}
+@media(max-width:900px){.track .hero p.lead,.track .hero .row{display:none}.track .hero{gap:18px;align-content:center}.stage{height:min(62vh,540px);min-height:360px}}
+@media(max-width:520px){.stage{min-height:360px}.cap{bottom:60px}}
+@media(prefers-reduced-motion:reduce){.marq div{animation:none}.rv{opacity:1;transform:none;transition:none}}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(55% 45% at 85% 0%,rgba(210,161,95,.16),transparent 70%),radial-gradient(45% 40% at 0% 45%,rgba(63,90,76,.28),transparent 70%)}
+html{scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+header{position:fixed;z-index:30;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:min(1100px,calc(100% - 24px));background:color-mix(in srgb,var(--bg) 60%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--line);border-radius:999px}
+header .wrap{max-width:none;padding:8px 10px 8px 22px;flex-wrap:nowrap}
+header nav{margin-left:auto;margin-right:8px}
+.btn{transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px -12px var(--acc)}.btn.sm{padding:9px 18px;font-size:14px}
+.hero h1{font-size:clamp(36px,5vw,76px);letter-spacing:-.035em}
+.track .hero{padding-top:84px}
+.stage{height:min(calc(100svh - 110px),720px);min-height:440px;box-shadow:0 40px 90px -40px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.07)}
+section{border-top:0;padding:96px 0}
+section h2{font-size:clamp(34px,5vw,64px);max-width:20ch}
+.item{position:relative;overflow:hidden}.item::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--acc) 24%,transparent),transparent 70%)}.item:hover::before{opacity:1}
+.big{font:800 clamp(44px,12vw,170px)/.9 "Bricolage Grotesque",sans-serif;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--ink) 28%,transparent);padding-bottom:22px;letter-spacing:-.04em;white-space:nowrap;overflow:hidden}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:9px;background:#25d366;color:#06210f;font:600 15px "DM Sans",sans-serif;padding:12px 18px;border-radius:999px;text-decoration:none;box-shadow:0 12px 32px -8px rgba(37,211,102,.55)}
+.wa i{width:9px;height:9px;border-radius:50%;background:#06210f;animation:pu 1.8s infinite}@keyframes pu{50%{opacity:.25}}
+@media(max-width:900px){section{padding:56px 0}.track .hero{padding-top:78px}.stage{height:min(54svh,480px);min-height:320px}}
+@media(max-width:600px){header nav{display:none}.stage{min-height:320px}}
+@media(prefers-reduced-motion:reduce){.wa i{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">Atelier MDF Oran</a>
+<nav><a href="#fabrications">Fabrications</a><a href="#methode">Méthode</a><a href="#contact">Contact</a></nav><a class="btn sm" href="#contact">Devis</a></div></header>
+
+<main id="top">
+<div class="track" id="track"><div class="wrap hero">
+ <div>
+  <h1>Vos meubles en MDF, dessinés et fabriqués à Oran.</h1>
+  <p class="lead">Cuisines, chambres, tables de nuit, dressings : chaque meuble est fabriqué sur mesure dans notre atelier. Tournez le modèle 3D, ouvrez les portes, choisissez la couleur.</p>
+  <div class="row"><a class="btn" href="#contact">Demander un devis</a><a class="btn ghost" href="#fabrications">Voir nos fabrications</a></div>
+ </div>
+ <div class="stage" id="stage">
+  <canvas id="gl" aria-label="Modèle 3D de meuble en MDF, déplacez pour tourner"></canvas>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="prog"><i id="progbar"></i></div><div class="cap" id="cap"></div><div class="hint">Glissez pour tourner, défilez pour animer</div>
+  <div class="ctrl"><div class="sw" id="sw"></div><button class="btn" id="open">Ouvrir</button></div>
+ </div>
+</div></div>
+
+<div class="marq" aria-hidden="true"><div><span>MDF laqué</span><span>Sur mesure</span><span>Cuisines</span><span>Chambres</span><span>Dressings</span><span>Pose à Oran</span><span>MDF laqué</span><span>Sur mesure</span><span>Cuisines</span><span>Chambres</span><span>Dressings</span><span>Pose à Oran</span></div></div>
+
+<section id="fabrications"><div class="wrap">
+ <h2>Tout ce que l’atelier fabrique</h2>
+ <div class="grid" id="grid"></div>
+ <p style="color:var(--mut);margin-top:22px">Aussi sur demande : bibliothèques, meubles TV, bureaux, placards, rangements. Dites-nous votre idée, nous la dessinons.</p>
+</div></section>
+
+<section id="methode"><div class="wrap">
+ <h2>De la mesure à la pose</h2>
+ <ol class="steps">
+  <li><b>Prise de mesures</b><span>Nous venons chez vous mesurer la pièce.</span></li>
+  <li><b>Plan et modèle 3D</b><span>Vous voyez le meuble avant sa fabrication.</span></li>
+  <li><b>Fabrication</b><span>Découpe, finition et laquage dans notre atelier.</span></li>
+  <li><b>Livraison et pose</b><span>Nous installons le meuble à Oran et ses environs.</span></li>
+ </ol>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+ <div><h2>Parlons de votre projet</h2>
+  <p style="color:var(--mut);max-width:42ch">Décrivez le meuble souhaité. Votre message s’ouvre dans WhatsApp, prêt à envoyer à l’atelier.</p>
+  <p>Atelier : Oran, Algérie<br>Téléphone : +213 5XX XX XX XX</p></div>
+ <div>
+  <input id="nom" placeholder="Votre nom" aria-label="Votre nom" autocomplete="name">
+  <textarea id="msg" placeholder="Ex. cuisine en L, 3 m, finition blanc laqué" aria-label="Votre projet"></textarea>
+  <button class="btn" id="send" type="button">Envoyer sur WhatsApp</button>
+ </div>
+</div></section>
+</main>
+<footer><div class="wrap big" aria-hidden="true">Atelier MDF Oran</div><div class="wrap">© 2026 Atelier MDF Oran. Meubles sur mesure.</div></footer>
+
+<a class="wa" id="wa" href="#contact" target="_blank" rel="noopener"><i></i>WhatsApp</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+var WA="213500000000"; // remplacer par le numéro WhatsApp de l'atelier
+var MODELS={
+ kitchen:{label:"Cuisine",desc:"Cuisines équipées avec meubles hauts et bas, tiroirs et plan de travail.",dist:6.4,ty:1.1},
+ bed:{label:"Chambre",desc:"Lit, tête de lit et chevets assortis, fabriqués dans le même décor.",dist:7.4,ty:.8},
+ night:{label:"Table de nuit",desc:"Chevets avec tiroirs coulissants, pieds laiton et finition au choix.",dist:3.5,ty:.6},
+ dress:{label:"Dressing",desc:"Dressings avec portes coulissantes, penderie et étagères sur mesure.",dist:6.2,ty:1.15}
+};
+var FIN=[["MDF brut",0xd9c3a0],["Blanc laqué",0xf0f0ec],["Gris perle",0x9aa5a1],["Vert sapin",0x3f5a4c],["Anthracite",0x2e3234],["Chêne",0xb98a58]];
+
+// UI
+var tabs=document.getElementById("tabs"),grid=document.getElementById("grid"),sw=document.getElementById("sw"),openBtn=document.getElementById("open");
+Object.keys(MODELS).forEach(function(k){
+ var b=document.createElement("button");b.textContent=MODELS[k].label;b.setAttribute("role","tab");b.dataset.k=k;b.onclick=function(){goTo(k)};tabs.appendChild(b);
+ var c=document.createElement("button");c.className="item";c.innerHTML="<h3>"+MODELS[k].label+"</h3><p>"+MODELS[k].desc+"</p>";
+ c.onclick=function(){goTo(k)};grid.appendChild(c);
+});
+FIN.forEach(function(f,i){var b=document.createElement("button");b.style.background="#"+f[1].toString(16).padStart(6,"0");b.setAttribute("aria-label",f[0]);b.title=f[0];b.setAttribute("aria-pressed",i==0);
+ b.onclick=function(){bodyM.color.set(f[1]);[].forEach.call(sw.children,function(x){x.setAttribute("aria-pressed",x===b)})};sw.appendChild(b)});
+document.getElementById("send").onclick=function(){
+ var t="Bonjour, je suis "+(document.getElementById("nom").value||"un client")+". "+document.getElementById("msg").value;
+ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(t),"_blank","noopener");
+};
+
+// 3D
+var stage=document.getElementById("stage"),canvas=document.getElementById("gl"),renderer;
+try{renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true})}catch(e){stage.classList.add("nogl");return}
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(38,1,.1,50);
+scene.add(new THREE.HemisphereLight(0xffffff,0x7d8a82,.85));
+var sun=new THREE.DirectionalLight(0xfff1dc,1.1);sun.position.set(3,6,4);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);
+["left","right","top","bottom"].forEach(function(s,i){sun.shadow.camera[s]=[-6,6,6,-6][i]});scene.add(sun);
+var gnd=new THREE.Mesh(new THREE.PlaneGeometry(24,24),new THREE.ShadowMaterial({opacity:.22}));gnd.rotation.x=-Math.PI/2;gnd.receiveShadow=true;scene.add(gnd);
+var disc=new THREE.Mesh(new THREE.CircleGeometry(3.4,64),new THREE.MeshBasicMaterial({color:0xd2a15f,transparent:true,opacity:.08}));disc.rotation.x=-Math.PI/2;disc.position.y=.002;scene.add(disc);
+
+var bodyM=new THREE.MeshStandardMaterial({color:FIN[0][1],roughness:.55});
+var brass=new THREE.MeshStandardMaterial({color:0xb8863b,metalness:.85,roughness:.3});
+var darkM=new THREE.MeshStandardMaterial({color:0x2b2f30,roughness:.5});
+var stone=new THREE.MeshStandardMaterial({color:0xcfd4d0,roughness:.8});
+var inner=new THREE.MeshStandardMaterial({color:0xe9e5dc,roughness:.8});
+function M(c,r){return new THREE.MeshStandardMaterial({color:c,roughness:r||.8})}
+var movers=[];
+function B(g,w,h,d,x,y,z,m){var o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m||bodyM);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;g.add(o);return o}
+function door(g,w,h,cx,cy,cz,side){var p=new THREE.Group();p.position.set(cx-side*w/2,cy,cz);B(p,w,h,.02,side*w/2,0,0);B(p,.02,.22,.03,side*(w-.05),0,.02,brass);g.add(p);movers.push({o:p,p:"ry",c:0,v:-1.6*side})}
+function drawer(g,w,h,x,y,z,dz){var p=new THREE.Group();p.position.set(x,y,z);B(p,w,h,.02,0,0,0);B(p,Math.min(.3,w*.5),.02,.03,0,h*.3,.02,brass);g.add(p);movers.push({o:p,p:"z",c:z,v:z+dz})}
+function ns(g,x,z,lamp){
+ [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(function(s){B(g,.04,.26,.04,x+s[0]*.21,.13,z+s[1]*.15,brass)});
+ B(g,.52,.03,.42,x,.715,z);B(g,.46,.42,.38,x,.5,z);
+ drawer(g,.44,.18,x,.6,z+.2,.28);drawer(g,.44,.18,x,.39,z+.2,.28);
+ if(lamp){var l=new THREE.Mesh(new THREE.CylinderGeometry(.04,.06,.2,16),brass);l.position.set(x,.84,z);l.castShadow=true;g.add(l);
+  g.add(Object.assign(new THREE.Mesh(new THREE.CylinderGeometry(.1,.15,.17,24,1,true),new THREE.MeshStandardMaterial({color:0xffe2b0,emissive:0xffcf8a,emissiveIntensity:.6,side:THREE.DoubleSide})),{position:new THREE.Vector3(x,1.03,z)}))}
+}
+var build={
+ kitchen:function(g){
+  B(g,2.4,.08,.55,0,.04,0,darkM);B(g,2.4,.8,.56,0,.48,-.02);
+  for(var i=0;i<3;i++){var cx=-.8+.8*i;
+   if(i==1){drawer(g,.76,.34,cx,.7,.28,.34);drawer(g,.76,.34,cx,.32+.08,.28,.34)}
+   else door(g,.78,.76,cx,.48,.28,i==0?1:-1)}
+  B(g,2.5,.04,.66,0,.9,0,darkM);B(g,2.4,.55,.03,0,1.2,-.3,stone);
+  B(g,2.4,.7,.34,0,1.98,-.13);
+  for(var j=0;j<3;j++)door(g,.78,.68,-.8+.8*j,1.98,.06,j==0?1:(j==2?-1:1));
+  var sink=B(g,.5,.02,.38,-.8,.915,0,M(0x9aa3a0,.3));
+  var tap=new THREE.Mesh(new THREE.TorusGeometry(.07,.012,8,16,Math.PI),brass);tap.position.set(-.8,1.0,-.2);g.add(tap);
+ },
+ bed:function(g){
+  B(g,1.7,.28,2.1,0,.24,0);B(g,1.62,.2,2,0,.48,.02,M(0xf2f0ea));
+  B(g,2,1.15,.1,0,.8,-1.1);B(g,1.8,.7,.04,0,.82,-1.03,M(0x3f5a4c));
+  B(g,.6,.14,.36,-.4,.66,-.75,M(0xffffff,.9));B(g,.6,.14,.36,.4,.66,-.75,M(0xffffff,.9));
+  B(g,1.64,.07,1.25,0,.62,.35,M(0x6f8a78,.95));B(g,1.64,.08,.3,0,.66,-.1,M(0xb8863b,.9));
+  ns(g,-1.3,-.9,true);ns(g,1.3,-.9,true);
+ },
+ night:function(g){ns(g,0,0,true)},
+ dress:function(g){
+  var H=2.3;B(g,.03,H,.6,-1.185,H/2,0);B(g,.03,H,.6,1.185,H/2,0);B(g,.03,H,.6,0,H/2,0);
+  B(g,2.4,.03,.6,0,H-.015,0);B(g,2.4,.08,.6,0,.04,0,darkM);B(g,2.4,H,.02,0,H/2,-.29,inner);
+  for(var k=1;k<=5;k++){var y=.4*k+.1;B(g,1.15,.02,.55,.6,y,0);
+   B(g,.4,.12,.34,.35,y+.07,0,M([0x6f8a78,0xb8863b,0xdcd6c8,0x3f5a4c,0xc4b59a][k-1]));B(g,.34,.1,.3,.85,y+.06,.02,M(0xe9e5dc))}
+  var rod=new THREE.Mesh(new THREE.CylinderGeometry(.015,.015,1.15,12),brass);rod.rotation.z=Math.PI/2;rod.position.set(-.6,2.0,0);g.add(rod);
+  for(var j=0;j<7;j++)B(g,.045,.8,.32,-1.05+j*.15,1.58,0,M([0x2e3234,0xdcd6c8,0x3f5a4c,0xb98a58,0x9aa5a1][j%5]));
+  var a=new THREE.Group();a.position.set(-.9,1.15,.31);B(a,.62,2.1,.02,0,0,0);B(a,.02,.5,.03,.24,0,.02,brass);g.add(a);
+  var b=new THREE.Group();b.position.set(-.3,1.15,.34);B(b,.62,2.1,.02,0,0,0);B(b,.02,.5,.03,-.24,0,.02,brass);g.add(b);
+  movers.push({o:b,p:"x",c:-.3,v:-.9});
+ }
+};
+var ledM=new THREE.MeshStandardMaterial({color:0xffe0a8,emissive:0xffc977,emissiveIntensity:1.4});
+function nsm(g,x,z){
+ B(g,.5,.4,.4,x,.6,z);B(g,.52,.03,.42,x,.815,z,darkM);
+ [.7,.5].forEach(function(y){var p=new THREE.Group();p.position.set(x,y,z+.21);B(p,.46,.17,.02,0,0,0);B(p,.3,.014,.03,0,.07,.005,darkM);g.add(p);movers.push({o:p,p:"z",c:z+.21,v:z+.5})});
+ B(g,.46,.012,.36,x,.394,z,ledM);
+ var l=new THREE.Mesh(new THREE.SphereGeometry(.08,20,16),new THREE.MeshStandardMaterial({color:0xfff0d0,emissive:0xffd9a0,emissiveIntensity:.8}));l.position.set(x,.92,z-.05);g.add(l);
+}
+build.night=function(g){B(g,1.6,1.6,.05,0,.8,-.25,darkM);nsm(g,0,0)};
+build.bed=function(g){
+ B(g,3.4,.01,2.6,0,.006,.25,M(0x26302b,.95));
+ B(g,1.76,.1,2.1,0,.07,0,darkM);B(g,1.9,.22,2.2,0,.26,0);B(g,1.8,.2,2.08,0,.47,.02,M(0xf2f0ea));
+ B(g,3.9,1.75,.06,0,.98,-1.13);B(g,2.1,.8,.05,0,.85,-1.08,M(0x3f5a4c,.95));B(g,3.9,.02,.03,0,1.84,-1.12,ledM);
+ B(g,.6,.14,.36,-.45,.66,-.8,M(0xffffff,.9));B(g,.6,.14,.36,.45,.66,-.8,M(0xffffff,.9));
+ B(g,1.84,.08,1.3,0,.61,.35,M(0x6f8a78,.95));B(g,1.86,.09,.3,0,.62,-.1,M(0xb8863b,.9));
+ nsm(g,-1.35,-.88);nsm(g,1.35,-.88);
+};
+var sp=0,spS=0,lastIdx=0,ex=0,so=0,lastCap="",KEYS=Object.keys(MODELS);
+function sm(a,b,x){x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)}
+var cur=null,curK="kitchen",yaw=-.55,grow=0,openV=0,isOpen=false,dist=6.4,ty=1.1,drag=false,lx=0;
+var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function select(k){
+ if(cur)scene.remove(cur);movers=[];cur=new THREE.Group();build[k](cur);scene.add(cur);
+ curK=k;grow=reduce?1:0;isOpen=false;openV=0;openBtn.textContent="Ouvrir";
+ [].forEach.call(tabs.children,function(b){b.setAttribute("aria-selected",b.dataset.k===k)});
+}
+openBtn.onclick=function(){isOpen=!isOpen;openBtn.textContent=isOpen?"Fermer":"Ouvrir"};
+canvas.addEventListener("pointerdown",function(e){drag=true;lx=e.clientX;canvas.setPointerCapture(e.pointerId)});
+canvas.addEventListener("pointermove",function(e){if(drag){yaw+=(e.clientX-lx)*.01;lx=e.clientX}});
+["pointerup","pointercancel"].forEach(function(n){canvas.addEventListener(n,function(){drag=false})});
+function resize(){var w=stage.clientWidth,h=stage.clientHeight;renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+new ResizeObserver(resize).observe(stage);resize();
+function back(x){var c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}
+function tick(){
+ requestAnimationFrame(tick);
+ if(!drag&&!reduce)yaw+=.004;
+ var m=MODELS[curK];dist+=(m.dist*Math.min(2.4,Math.max(1,1.1/cam.aspect))-dist)*.06;ty+=(m.ty-ty)*.06;
+ grow=Math.min(1,grow+.03);spS+=(sp-spS)*.08;
+ var idx=Math.max(0,Math.min(3,Math.floor(spS*4-1e-6)));
+ if(idx!==lastIdx){lastIdx=idx;select(KEYS[idx])}
+ var t=Math.min(1,Math.max(0,spS*4-idx));
+ ex=sm(.12,.45,t)*(1-sm(.6,.9,t));so=sm(.62,.78,t);
+ progbar.style.width=(spS*100)+"%";
+ var cp=t<.28?MODELS[curK].label+" : vue complète":t<.62?"Panneaux MDF découpés sur mesure":"Portes et tiroirs en mouvement";
+ if(cp!==lastCap){lastCap=cp;capEl.textContent=cp}
+ cur.scale.setScalar(Math.max(.01,back(grow)));cur.rotation.y=yaw+spS*Math.PI*3;
+ var amt=(curK==="night"?.45:.85)*ex;
+ cur.children.forEach(function(c){var u=c.userData;if(!u.b){u.b=c.position.clone();var d=c.position.clone().sub(new THREE.Vector3(0,1,0));d.y*=.6;if(d.length()<.01)d.set(0,1,0);u.d=d.normalize();u.off=new THREE.Vector3()}
+  u.off.copy(u.d).multiplyScalar(amt);c.position.copy(u.b).add(u.off)});
+ openV+=((isOpen?1:so)-openV)*.08;
+ movers.forEach(function(v){var val=v.c+(v.v-v.c)*openV;if(v.p==="ry")v.o.rotation.y=val;else v.o.position[v.p]=val+(v.o.userData.off?v.o.userData.off[v.p]:0)});
+ cam.position.set(0,ty+.7,dist);cam.lookAt(0,ty,0);
+ renderer.render(scene,cam);
+}
+var trackEl=document.getElementById("track"),progbar=document.getElementById("progbar"),capEl=document.getElementById("cap");
+function onScroll(){var r=trackEl.getBoundingClientRect(),h=trackEl.offsetHeight-innerHeight;sp=h>0?Math.min(1,Math.max(0,-r.top/h)):0}
+function goTo(k){var i=KEYS.indexOf(k),h=trackEl.offsetHeight-innerHeight,y=trackEl.getBoundingClientRect().top+scrollY+(i/4+.03)*h;scrollTo({top:y,behavior:"smooth"})}
+addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll();
+if(!reduce&&"IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;el.classList.add("in");io.unobserve(el);setTimeout(function(){el.style.transitionDelay="0s"},1400)}})},{threshold:.15});
+ document.querySelectorAll("#fabrications h2,.item,.steps li,#contact .wrap>div").forEach(function(el,i){el.classList.add("rv");el.style.transitionDelay=(i%4)*90+"ms";io.observe(el)})}
+document.getElementById("wa").href="https://wa.me/"+WA;
+document.querySelectorAll(".item").forEach(function(el){el.addEventListener("pointermove",function(e){var r=el.getBoundingClientRect();el.style.setProperty("--mx",(e.clientX-r.left)+"px");el.style.setProperty("--my",(e.clientY-r.top)+"px")})});
+select("kitchen");tick();
+})();
+</script>
+</body>
+</html>
